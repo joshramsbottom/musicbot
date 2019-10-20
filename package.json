@@ -17,7 +17,7 @@
     "dotenv": "^8.2.0",
     "node-opus": "^0.3.3",
     "youtube-search": "^1.1.4",
-    "ytdl-core-discord": "^1.0.3"
+    "ytdl-core-discord": "https://github.com/amishshah/ytdl-core-discord/tarball/master"
   },
   "devDependencies": {
     "@types/dotenv": "^6.1.1",

@@ -14,6 +14,11 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.11.1.tgz#1fd7b821f798b7fa29f667a1be8f3442bb8922a3"
   integrity sha512-TJtwsqZ39pqcljJpajeoofYRfeZ7/I/OMUQ5pR4q5wOKf2ocrUvBAZUMhWsOvKx3dVc/aaV5GluBivt0sWqA5A==
 
+"@types/node@^11.11.3":
+  version "11.13.22"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.13.22.tgz#91ee88ebfa25072433497f6f3150f84fa8c3a91b"
+  integrity sha512-rOsaPRUGTOXbRBOKToy4cgZXY4Y+QSVhxcLwdEveozbk7yuudhWMpxxcaXqYizLMP3VY7OcWCFtx9lGFh5j5kg==
+
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
@@ -2266,11 +2271,11 @@ youtube-search@^1.1.4:
     axios "^0.18.0"
     xml2js "~0.2.8"
 
-ytdl-core-discord@^1.0.3:
+"ytdl-core-discord@https://github.com/amishshah/ytdl-core-discord/tarball/master":
   version "1.0.3"
-  resolved "https://registry.yarnpkg.com/ytdl-core-discord/-/ytdl-core-discord-1.0.3.tgz#4dbe41d77507ee52fcf184b269e2cb9d7f2262aa"
-  integrity sha512-/POaSbStmY+PMRnxz4mVN0Rw9Ktt3zs94j2bRX30vmtdMR1yCz9JbEmRY4ouXJK18k/FjdRs5Bnvinud2hbYGQ==
+  resolved "https://github.com/amishshah/ytdl-core-discord/tarball/master#77278f7b22bef37ab9b8e1081657e2e0e519b212"
   dependencies:
+    "@types/node" "^11.11.3"
     prism-media "^1.0.1"
     ytdl-core "^0.29.1"
 
