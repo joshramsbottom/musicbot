@@ -2,8 +2,8 @@ import { Command, CommandMessage } from 'discord.js-commando';
 import youtubeSearch, { YouTubeSearchResults } from 'youtube-search';
 
 import MusicBot from '../MusicBot';
-import TrackQueue from '../queue/TrackQueue';
 import QueueItem from '../queue/QueueItem';
+import TrackQueue from '../queue/TrackQueue';
 
 const ytOptions: youtubeSearch.YouTubeSearchOptions = {
   maxResults: 1,

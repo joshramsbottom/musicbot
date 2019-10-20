@@ -12,12 +12,14 @@ export default class TrackQueue {
     if (this.isStartable()) this.playNext();
   }
 
-  private isStartable() {
-    return this.currentTrack === null;
-  }
-
-  private async playNext() {
+  public async playNext() {
     this.currentTrack = this.queue.shift()!;
+
+    // Check if we've hit the end of the queue
+    if (!this.currentTrack) {
+      return;
+    }
+
     const { channel, link } = this.currentTrack;
 
     // Join channel
@@ -26,6 +28,10 @@ export default class TrackQueue {
     const dispatcher = connection.playOpusStream(await ytdl(link));
     // Set up handler when track ends
     dispatcher.on('end', () => this.onTrackFinished());
+  }
+
+  private isStartable() {
+    return this.currentTrack === null;
   }
 
   private onTrackFinished() {
