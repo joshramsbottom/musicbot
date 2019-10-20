@@ -1,12 +1,9 @@
-import { CommandoClient } from 'discord.js-commando';
 import * as path from 'path';
 
+import MusicBot from './MusicBot';
 import './util/secrets';
 
-const client = new CommandoClient({
-  commandPrefix: '!',
-  owner: '183873160779792385',
-});
+const client = new MusicBot();
 
 client.registry
   .registerDefaultTypes()
