@@ -1,18 +1,16 @@
 import { Command, CommandMessage } from 'discord.js-commando';
-
-import MusicBot from '../MusicBot';
 import TrackQueue from '../queue/TrackQueue';
+import MusicBot from '../MusicBot';
 
-export default class SkipCommand extends Command {
+export default class QueueCommand extends Command {
   private readonly trackQueue: TrackQueue;
 
   constructor(client: MusicBot) {
     super(client, {
-      name: 'skip',
-      aliases: ['next'],
+      name: 'queue',
       group: 'music',
-      memberName: 'skip',
-      description: 'Skip the currently playing track',
+      memberName: 'queue',
+      description: 'Show the queue of upcoming tracks',
       guildOnly: true,
     });
 
@@ -20,7 +18,6 @@ export default class SkipCommand extends Command {
   }
 
   run(message: CommandMessage) {
-    this.trackQueue.skip();
-    return message.say('Skipping...');
+    return message.say(this.trackQueue.printQueue());
   }
 }

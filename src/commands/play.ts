@@ -18,13 +18,14 @@ export default class PlayCommand extends Command {
       name: 'play',
       group: 'music',
       memberName: 'play',
-      description: 'Search YouTube and play a track',
+      description: 'Search YouTube and play a track, or resume playback',
       guildOnly: true,
       args: [
         {
           key: 'searchQuery',
           prompt: 'What track would you like to search for?',
           type: 'string',
+          default: '',
         },
       ],
     });
@@ -33,6 +34,12 @@ export default class PlayCommand extends Command {
   }
 
   async run(message: CommandMessage, { searchQuery }: { searchQuery: string }) {
+    // If no argument given try resume existing track
+    if (searchQuery.trim() === '') {
+      this.trackQueue.resume();
+      return message.say('Resuming...');
+    }
+
     // Make sure author is in a voice channel
     const { voiceChannel } = message.member;
     if (!voiceChannel) {
