@@ -68,12 +68,28 @@ export default class TrackQueue {
 
     // Join channel
     const connection = await channel.join();
+
+    connection.on('error', error => {
+      console.error(`Connection error: ${error}`);
+    });
+
     // Play track
     this.dispatcher = connection.playOpusStream(await ytdl(link, {
       highWaterMark: 1<<25,
     }));
+
     // Set up handler when track ends
-    this.dispatcher.on('end', () => this.onTrackFinished());
+    this.dispatcher.on('end', reason => {
+      console.log(`Song ended (${reason})`);
+      this.onTrackFinished();
+    });
+
+    this.dispatcher.on('error', error => {
+      console.error(`Dispatcher error: ${error}`);
+    });
+    this.dispatcher.on('debug', info => {
+      console.log(`DEBUG ${info}`);
+    });
   }
 
   private onTrackFinished() {
