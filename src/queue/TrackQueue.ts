@@ -41,7 +41,7 @@ export default class TrackQueue {
 
     if (!this.isEmpty()) {
       this.queue.forEach((item, index) => {
-        queueString += `\n${index}. ${item.title}`;
+        queueString += `\n${index + 1}. ${item.title}`;
       });
     }
 
@@ -78,6 +78,7 @@ export default class TrackQueue {
 
   private onTrackFinished() {
     this.dispatcher = null;
+    this.currentTrack = null;
 
     if (!this.isEmpty()) {
       this.playNext();
