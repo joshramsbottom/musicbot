@@ -70,7 +70,7 @@ export default class TrackQueue {
     const connection = await channel.join();
 
     connection.on('error', error => {
-      console.error(`Connection error: ${error}`);
+      console.error('Connection error: ', error);
     });
 
     // Play track
@@ -85,14 +85,19 @@ export default class TrackQueue {
     });
 
     this.dispatcher.on('error', error => {
-      console.error(`Dispatcher error: ${error}`);
+      console.error('Dispatcher error: ', error);
     });
     this.dispatcher.on('debug', info => {
-      console.log(`DEBUG ${info}`);
+      console.log('DEBUG ', info);
     });
   }
 
   private onTrackFinished() {
+    // Remove event listeners
+    if (this.dispatcher) {
+      this.dispatcher.removeAllListeners();
+    }
+
     this.dispatcher = null;
     this.currentTrack = null;
 
