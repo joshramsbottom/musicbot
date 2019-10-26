@@ -1,4 +1,4 @@
-import { StreamDispatcher } from "discord.js";
+import { StreamDispatcher, VoiceConnection } from "discord.js";
 import ytdl from "ytdl-core-discord";
 
 import QueueItem from "./QueueItem";
@@ -81,7 +81,7 @@ export default class TrackQueue {
     // Set up handler when track ends
     this.dispatcher.on('end', reason => {
       console.log(`Song ended (${reason})`);
-      this.onTrackFinished();
+      this.onTrackFinished(connection);
     });
 
     this.dispatcher.on('error', error => {
@@ -92,7 +92,7 @@ export default class TrackQueue {
     });
   }
 
-  private onTrackFinished() {
+  private onTrackFinished(connection: VoiceConnection) {
     // Remove event listeners
     if (this.dispatcher) {
       this.dispatcher.removeAllListeners();
@@ -103,7 +103,15 @@ export default class TrackQueue {
 
     if (!this.isEmpty()) {
       this.playNext();
+      return;
     }
+
+    // Start a timer to disconnect if no more tracks are queued
+    setTimeout(() => {
+      if (this.isEmpty()) {
+        connection.disconnect();
+      }
+    }, 60000);
   }
 
   private isEmpty() {
