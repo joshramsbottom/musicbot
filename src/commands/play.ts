@@ -1,4 +1,5 @@
 import { Command, CommandMessage } from 'discord.js-commando';
+import { htmlUnescapeTag } from 'escape-goat';
 import youtubeSearch, { YouTubeSearchResults } from 'youtube-search';
 
 import MusicBot from '../MusicBot';
@@ -54,7 +55,7 @@ export default class PlayCommand extends Command {
     // Add track to queue
     this.trackQueue.push(new QueueItem(title, link, voiceChannel))
 
-    console.log(`Playing ${title}`);
-    return message.say(`Playing ${title}`);
+    console.log(htmlUnescapeTag`Playing ${title}`);
+    return message.say(htmlUnescapeTag`Playing ${title}`);
   }
 }
