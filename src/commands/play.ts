@@ -54,6 +54,7 @@ export default class PlayCommand extends Command {
     // Add track to queue
     this.trackQueue.push(new QueueItem(title, link, voiceChannel))
 
+    console.log(`Playing ${title}`);
     return message.say(`Playing ${title}`);
   }
 }

@@ -109,6 +109,7 @@ export default class TrackQueue {
     // Start a timer to disconnect if no more tracks are queued
     setTimeout(() => {
       if (this.isEmpty()) {
+        console.log('Disconnecting because there are no songs queued');
         connection.disconnect();
       }
     }, 60000);
