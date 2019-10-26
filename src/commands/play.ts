@@ -1,5 +1,7 @@
 import { Command, CommandMessage } from 'discord.js-commando';
+import { getBasicInfo } from 'ytdl-core-discord';
 import { htmlUnescapeTag } from 'escape-goat';
+import { VoiceChannel } from 'discord.js';
 import youtubeSearch, { YouTubeSearchResults } from 'youtube-search';
 
 import MusicBot from '../MusicBot';
@@ -47,15 +49,28 @@ export default class PlayCommand extends Command {
       return message.say('You must be in a voice channel to use this command');
     }
 
+    // Check if an URL was given
+    if (searchQuery.match(/^(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/)) {
+      const videoInfo = await getBasicInfo(searchQuery);
+      const { title } = videoInfo;
+      const reply = this.queueTrack(title, searchQuery, voiceChannel);
+      return message.say(reply);
+    }
+
     // Get top result from YouTube data API
     const { results } = await youtubeSearch(searchQuery, ytOptions);
     const result: YouTubeSearchResults = results[0];
     const { link, title } = result;
 
-    // Add track to queue
+    const reply = this.queueTrack(title, link, voiceChannel);
+    return message.say(reply);
+  }
+
+  private queueTrack(title: string, link: string, voiceChannel: VoiceChannel) {
     this.trackQueue.push(new QueueItem(title, link, voiceChannel))
 
-    console.log(htmlUnescapeTag`Playing ${title}`);
-    return message.say(htmlUnescapeTag`Playing ${title}`);
+    const reply = htmlUnescapeTag`Playing ${title}`;
+    console.log(reply);
+    return reply;
   }
 }
