@@ -9,7 +9,7 @@ import MusicBot from '../MusicBot';
 import QueueItem from '../queue/QueueItem';
 import TrackQueue from '../queue/TrackQueue';
 
-const logger = pino();
+const logger = pino({ level: 'debug' });
 
 const ytOptions: youtubeSearch.YouTubeSearchOptions = {
   maxResults: 1,

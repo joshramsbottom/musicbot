@@ -4,7 +4,7 @@ import ytdl from "ytdl-core-discord";
 
 import QueueItem from "./QueueItem";
 
-const logger = pino();
+const logger = pino({ level: 'debug' });
 
 export default class TrackQueue {
   private queue: QueueItem[] = [];
@@ -73,7 +73,7 @@ export default class TrackQueue {
     const connection = await channel.join();
 
     connection.on('error', error => {
-      logger.error('Connection error: ', error);
+      logger.error('Connection error:', error);
     });
 
     // Play track
@@ -83,12 +83,12 @@ export default class TrackQueue {
 
     // Set up handler when track ends
     this.dispatcher.on('end', reason => {
-      logger.info('Song ended: ', reason);
+      logger.info('Song ended:', reason);
       this.onTrackFinished(connection);
     });
 
     this.dispatcher.on('error', error => {
-      logger.error('Dispatcher error: ', error);
+      logger.error('Dispatcher error:', error);
     });
     this.dispatcher.on('debug', info => {
       logger.debug(info);

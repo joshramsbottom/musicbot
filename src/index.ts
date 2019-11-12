@@ -4,7 +4,7 @@ import pino from 'pino';
 import MusicBot from './MusicBot';
 import './util/secrets';
 
-const logger = pino();
+const logger = pino({ level: 'debug' });
 const client = new MusicBot();
 
 client.registry
