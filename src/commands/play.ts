@@ -1,12 +1,15 @@
 import { Command, CommandMessage } from 'discord.js-commando';
 import { getBasicInfo } from 'ytdl-core-discord';
 import { htmlUnescapeTag } from 'escape-goat';
+import pino from 'pino';
 import { VoiceChannel } from 'discord.js';
 import youtubeSearch, { YouTubeSearchResults } from 'youtube-search';
 
 import MusicBot from '../MusicBot';
 import QueueItem from '../queue/QueueItem';
 import TrackQueue from '../queue/TrackQueue';
+
+const logger = pino();
 
 const ytOptions: youtubeSearch.YouTubeSearchOptions = {
   maxResults: 1,
@@ -70,7 +73,7 @@ export default class PlayCommand extends Command {
     this.trackQueue.push(new QueueItem(title, link, voiceChannel))
 
     const reply = htmlUnescapeTag`Playing ${title}`;
-    console.log(reply);
+    logger.debug(reply);
     return reply;
   }
 }

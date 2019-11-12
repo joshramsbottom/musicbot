@@ -1,7 +1,10 @@
+import pino from 'pino';
 import { StreamDispatcher, VoiceConnection } from "discord.js";
 import ytdl from "ytdl-core-discord";
 
 import QueueItem from "./QueueItem";
+
+const logger = pino();
 
 export default class TrackQueue {
   private queue: QueueItem[] = [];
@@ -70,7 +73,7 @@ export default class TrackQueue {
     const connection = await channel.join();
 
     connection.on('error', error => {
-      console.error('Connection error: ', error);
+      logger.error('Connection error: ', error);
     });
 
     // Play track
@@ -80,15 +83,15 @@ export default class TrackQueue {
 
     // Set up handler when track ends
     this.dispatcher.on('end', reason => {
-      console.log(`Song ended (${reason})`);
+      logger.info('Song ended: ', reason);
       this.onTrackFinished(connection);
     });
 
     this.dispatcher.on('error', error => {
-      console.error('Dispatcher error: ', error);
+      logger.error('Dispatcher error: ', error);
     });
     this.dispatcher.on('debug', info => {
-      console.log('DEBUG ', info);
+      logger.debug(info);
     });
   }
 
@@ -109,7 +112,7 @@ export default class TrackQueue {
     // Start a timer to disconnect if no more tracks are queued
     setTimeout(() => {
       if (this.isEmpty()) {
-        console.log('Disconnecting because there are no songs queued');
+        logger.info('Disconnecting because there are no songs queued');
         connection.disconnect();
       }
     }, 60000);
