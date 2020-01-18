@@ -77,9 +77,10 @@ export default class TrackQueue {
     });
 
     // Play track
-    this.dispatcher = connection.playOpusStream(await ytdl(link, {
+    const stream = ytdl(link, {
       filter: 'audioonly',
-    }));
+    });
+    this.dispatcher = connection.playStream(stream);
 
     // Set up handler when track ends
     this.dispatcher.on('end', reason => {
