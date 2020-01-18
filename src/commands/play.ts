@@ -1,5 +1,5 @@
 import { Command, CommandMessage } from 'discord.js-commando';
-import { getBasicInfo } from 'ytdl-core-discord';
+import { getBasicInfo } from 'ytdl-core';
 import { htmlUnescapeTag } from 'escape-goat';
 import pino from 'pino';
 import { VoiceChannel } from 'discord.js';

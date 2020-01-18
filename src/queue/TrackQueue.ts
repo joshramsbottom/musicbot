@@ -1,6 +1,6 @@
 import pino from 'pino';
 import { StreamDispatcher, VoiceConnection } from "discord.js";
-import ytdl from "ytdl-core-discord";
+import ytdl from "ytdl-core";
 
 import QueueItem from "./QueueItem";
 
@@ -78,7 +78,7 @@ export default class TrackQueue {
 
     // Play track
     this.dispatcher = connection.playOpusStream(await ytdl(link, {
-      highWaterMark: 1<<25,
+      filter: 'audioonly',
     }));
 
     // Set up handler when track ends
