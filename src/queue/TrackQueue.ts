@@ -80,6 +80,12 @@ export default class TrackQueue {
     const stream = ytdl(link, {
       filter: 'audioonly',
     });
+
+    stream.on('error', error => {
+      logger.error('Stream error:', error);
+      this.onTrackFinished(connection);
+    });
+
     this.dispatcher = connection.playStream(stream);
 
     // Set up handler when track ends
@@ -90,6 +96,7 @@ export default class TrackQueue {
 
     this.dispatcher.on('error', error => {
       logger.error('Dispatcher error:', error);
+      this.onTrackFinished(connection);
     });
     this.dispatcher.on('debug', info => {
       logger.debug(info);
