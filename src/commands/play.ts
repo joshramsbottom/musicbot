@@ -1,4 +1,4 @@
-import { Command, CommandMessage } from 'discord.js-commando';
+import { Command, CommandoMessage } from 'discord.js-commando';
 import { getBasicInfo } from 'ytdl-core';
 import { htmlUnescapeTag } from 'escape-goat';
 import pino from 'pino';
@@ -39,7 +39,7 @@ export default class PlayCommand extends Command {
     this.trackQueue = client.trackQueue;
   }
 
-  async run(message: CommandMessage, { searchQuery }: { searchQuery: string }) {
+  async run(message: CommandoMessage, { searchQuery }: { searchQuery: string }) {
     // If no argument given try resume existing track
     if (searchQuery.trim() === '') {
       this.trackQueue.resume();
@@ -47,7 +47,7 @@ export default class PlayCommand extends Command {
     }
 
     // Make sure author is in a voice channel
-    const { voiceChannel } = message.member;
+    const { channel: voiceChannel } = message.member.voice;
     if (!voiceChannel) {
       return message.say('You must be in a voice channel to use this command');
     }

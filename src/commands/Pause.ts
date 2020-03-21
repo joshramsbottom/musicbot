@@ -1,4 +1,4 @@
-import { Command, CommandMessage } from 'discord.js-commando';
+import { Command, CommandoMessage } from 'discord.js-commando';
 
 import MusicBot from '../MusicBot';
 import TrackQueue from '../queue/TrackQueue';
@@ -19,7 +19,7 @@ export default class PauseCommand extends Command {
     this.trackQueue = client.trackQueue;
   }
 
-  run(message: CommandMessage) {
+  run(message: CommandoMessage) {
     this.trackQueue.pause();
     return message.say('Pausing...');
   }

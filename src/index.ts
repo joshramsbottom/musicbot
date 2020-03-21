@@ -9,14 +9,14 @@ const client = new MusicBot();
 
 client.registry
   .registerDefaultTypes()
-  .registerGroup(['music', 'Music commands'])
+  .registerGroup('music')
   .registerDefaultGroups()
   .registerDefaultCommands()
   .registerCommandsIn(path.join(__dirname, 'commands'));
 
 client.once('ready', () => {
-  logger.info(`Logged in as ${client.user.tag} (${client.user.id})`);
-  client.user.setActivity('!help');
+  logger.info(`Logged in as ${client.user!.tag} (${client.user!.id})`);
+  client.user!.setActivity('!help');
 });
 client.on('debug', message => logger.debug(message));
 client.on('warn', message => logger.warn(message));

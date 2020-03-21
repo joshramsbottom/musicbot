@@ -86,11 +86,11 @@ export default class TrackQueue {
       this.onTrackFinished(connection);
     });
 
-    this.dispatcher = connection.playStream(stream);
+    this.dispatcher = connection.play(stream);
 
     // Set up handler when track ends
-    this.dispatcher.on('end', reason => {
-      logger.info('Song ended:', reason);
+    this.dispatcher.on('finish', () => {
+      logger.info('Song ended');
       this.onTrackFinished(connection);
     });
 

@@ -1,4 +1,4 @@
-import { Command, CommandMessage } from 'discord.js-commando';
+import { Command, CommandoMessage } from 'discord.js-commando';
 import TrackQueue from '../queue/TrackQueue';
 import MusicBot from '../MusicBot';
 
@@ -17,7 +17,7 @@ export default class QueueCommand extends Command {
     this.trackQueue = client.trackQueue;
   }
 
-  run(message: CommandMessage) {
+  run(message: CommandoMessage) {
     return message.say(this.trackQueue.printQueue());
   }
 }
