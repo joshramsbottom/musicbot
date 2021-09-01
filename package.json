@@ -2,32 +2,39 @@
   "name": "musicbot",
   "version": "0.1.0",
   "description": "Simple Discord bot for playing music",
-  "main": "dist/index.js",
+  "main": "src/index.ts",
   "author": "Joshua Ramsbottom",
   "license": "MIT",
   "scripts": {
     "start": "node dist/index.js",
     "build": "tsc",
-    "watch": "tsc -w",
-    "develop": "concurrently \"npm run watch\" \"nodemon dist/index.js\""
+    "dev": "nodemon",
+    "prepare": "husky install"
   },
   "dependencies": {
-    "@types/pino": "^5.8.13",
-    "discord.js": "^12.0.0",
-    "discord.js-commando": "https://github.com/discordjs/Commando#master",
-    "dotenv": "^8.2.0",
+    "@discordjs/builders": "^0.6.0",
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "@discordjs/voice": "^0.6.0",
+    "discord-api-types": "^0.22.0",
+    "discord.js": "^13.1.0",
+    "dotenv": "^10.0.0",
     "escape-goat": "^2.1.1",
-    "node-opus": "^0.3.3",
-    "pino": "^5.13.6",
     "youtube-search": "^1.1.4",
     "ytdl-core": "^2.0.0"
   },
   "devDependencies": {
-    "@types/dotenv": "^6.1.1",
-    "@types/node": "^12.11.1",
-    "@types/ws": "^7.2.3",
-    "concurrently": "^5.0.0",
-    "nodemon": "^1.19.4",
-    "typescript": "^3.6.4"
+    "@types/node": "^16.7.10",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
+    "nodemon": "^2.0.12",
+    "prettier": "^2.3.2",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.2"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  },
+  "volta": {
+    "node": "16.8.0"
   }
 }
