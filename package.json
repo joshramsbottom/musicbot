@@ -1,33 +1,23 @@
 {
   "name": "musicbot",
-  "version": "0.1.0",
-  "description": "Simple Discord bot for playing music",
-  "main": "dist/index.js",
-  "author": "Joshua Ramsbottom",
-  "license": "MIT",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "node dist/index.js",
-    "build": "tsc",
-    "watch": "tsc -w",
-    "develop": "concurrently \"npm run watch\" \"nodemon dist/index.js\""
+    "dev": "nodemon index.js"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "@types/pino": "^5.8.13",
-    "discord.js": "^12.0.0",
-    "discord.js-commando": "https://github.com/discordjs/Commando#master",
-    "dotenv": "^8.2.0",
-    "escape-goat": "^2.1.1",
-    "node-opus": "^0.3.3",
-    "pino": "^5.13.6",
-    "youtube-search": "^1.1.4",
-    "ytdl-core": "^2.0.0"
+    "@discord-player/extractor": "^4.1.2",
+    "@discordjs/opus": "^0.9.0",
+    "discord-player": "^6.1.1",
+    "discord.js": "^14.9.0",
+    "dotenv": "^16.0.3",
+    "ytdl-core": "^4.11.4"
   },
   "devDependencies": {
-    "@types/dotenv": "^6.1.1",
-    "@types/node": "^12.11.1",
-    "@types/ws": "^7.2.3",
-    "concurrently": "^5.0.0",
-    "nodemon": "^1.19.4",
-    "typescript": "^3.6.4"
+    "nodemon": "^2.0.22"
   }
 }
