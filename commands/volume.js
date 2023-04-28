@@ -13,7 +13,7 @@ module.exports = {
         .setMaxValue(100)
         .setRequired(true)
     ),
-  async execute(interaction, client) {
+  async execute(interaction) {
     const queue = useQueue(interaction.guild.id);
     const volume = interaction.options.getInteger("volume");
 

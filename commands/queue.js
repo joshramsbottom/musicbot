@@ -5,7 +5,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("queue")
     .setDescription("Show the first 10 songs in the queue"),
-  async execute(interaction, client) {
+  async execute(interaction) {
     const queue = useQueue(interaction.guild.id);
 
     if (!queue) {

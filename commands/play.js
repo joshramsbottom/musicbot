@@ -10,7 +10,7 @@ module.exports = {
         .setDescription("The search query to use on youtube")
         .setRequired(true)
     ),
-  async execute(interaction, client) {
+  async execute(interaction) {
     const channel = interaction.member.voice.channel;
     if (!channel) {
       return interaction.reply({
@@ -23,7 +23,7 @@ module.exports = {
     await interaction.deferReply();
 
     try {
-      const { track } = await client.player.play(channel, query, {
+      const { track } = await interaction.client.player.play(channel, query, {
         nodeOptions: {
           metadata: interaction,
           leaveOnStop: true,
@@ -36,7 +36,7 @@ module.exports = {
         },
       });
 
-      return interaction.followUp(`➕ ${track} added to queue`);
+      return interaction.followUp(`💽 **${track}** added to queue`);
     } catch (error) {
       return interaction.followUp(`Something went wrong: ${error}`);
     }
