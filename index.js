@@ -9,6 +9,7 @@ const client = new Client({
 });
 
 client.player = new Player(client);
+client.player.extractors.loadDefault();
 client.commands = new Collection();
 
 const commandsPath = path.join(__dirname, "commands");
