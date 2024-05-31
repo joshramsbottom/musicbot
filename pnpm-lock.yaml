@@ -14,6 +14,9 @@ importers:
       '@sentry/node':
         specifier: ^7.93.0
         version: 7.93.0
+      '@web-scrobbler/metadata-filter':
+        specifier: ^3.1.0
+        version: 3.1.0
       discord-player:
         specifier: ^6.6.9
         version: 6.6.9(@discord-player/extractor@4.4.7)
@@ -123,6 +126,10 @@ packages:
   '@vladfrangu/async_event_emitter@2.2.4':
     resolution: {integrity: sha512-ButUPz9E9cXMLgvAW8aLAKKJJsPu1dY1/l/E8xzLFuysowXygs6GBcyunK9rnGC4zTsnIc2mQo71rGw9U+Ykug==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
+
+  '@web-scrobbler/metadata-filter@3.1.0':
+    resolution: {integrity: sha512-3VLxdrcfRZ/jac7VV3v5s3R+HUQ/o4gp8vqZoojGhrvyrYyrjsyuJGaoSiFLoYmwYNAjeqJ/tnvIeJt8DSi4sg==}
+    engines: {node: '>=10.0.0'}
 
   agent-base@6.0.2:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
@@ -678,6 +685,8 @@ snapshots:
       '@types/node': 20.13.0
 
   '@vladfrangu/async_event_emitter@2.2.4': {}
+
+  '@web-scrobbler/metadata-filter@3.1.0': {}
 
   agent-base@6.0.2:
     dependencies:

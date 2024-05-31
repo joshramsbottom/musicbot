@@ -1,4 +1,4 @@
-FROM node:18.4-bullseye-slim
+FROM node:20
 RUN apt update && apt install ffmpeg -y
 ENV NODE_ENV production
 RUN npm install -g pnpm
