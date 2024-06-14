@@ -13,11 +13,11 @@
     "@discord-player/extractor": "^4.4.7",
     "@sentry/node": "^7.116.0",
     "@web-scrobbler/metadata-filter": "^3.1.0",
-    "discord-player": "^6.6.9",
-    "discord.js": "^14.15.2",
+    "discord-player": "^6.6.10",
+    "discord.js": "^14.15.3",
     "dotenv": "^16.4.5",
     "mediaplex": "^0.0.9",
-    "play-dl": "^1.9.7"
+    "youtube-ext": "^1.1.25"
   },
   "devDependencies": {
     "nodemon": "^3.1.2"
